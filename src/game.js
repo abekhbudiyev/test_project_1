@@ -140,6 +140,7 @@ export function togglePause(state) {
 export function createGameEngine({ onStateChange, rng = Math.random } = {}) {
   let state = createInitialState(rng);
   let timerId = null;
+  let tickMs = TICK_MS;
 
   const notify = () => {
     if (typeof onStateChange === "function") {
@@ -159,19 +160,34 @@ export function createGameEngine({ onStateChange, rng = Math.random } = {}) {
     }
   };
 
+  const startTimer = () => {
+    clearTimer();
+    timerId = setInterval(tick, tickMs);
+  };
+
   return {
     getState() {
       return state;
     },
+    getTickMs() {
+      return tickMs;
+    },
     start() {
-      clearTimer();
-      timerId = setInterval(tick, TICK_MS);
+      startTimer();
       notify();
     },
     restart() {
       state = createInitialState(rng);
-      clearTimer();
-      timerId = setInterval(tick, TICK_MS);
+      startTimer();
+      notify();
+    },
+    setTickMs(nextTickMs) {
+      const parsed = Number(nextTickMs);
+      if (!Number.isFinite(parsed) || parsed < 40) {
+        return;
+      }
+      tickMs = Math.floor(parsed);
+      startTimer();
       notify();
     },
     setDirection(direction) {

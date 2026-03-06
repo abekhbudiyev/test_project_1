@@ -9,13 +9,27 @@
 <body>
   <main class="app">
     <header class="hud">
-      <h1>Classic Snake</h1>
+      <div>
+        <h1>Classic Snake</h1>
+        <p class="subtitle">Eat, grow, survive.</p>
+      </div>
       <div class="meta">
         <p class="score">Score: <span id="score">0</span></p>
         <p class="score">Best: <span id="best-score">0</span></p>
+        <p class="score">Speed: <span id="speed">0</span>ms</p>
         <p class="status" id="status">Running</p>
       </div>
     </header>
+
+    <section class="toolbar" aria-label="Game settings">
+      <label for="difficulty-select">Difficulty</label>
+      <select id="difficulty-select">
+        <option value="easy">Easy</option>
+        <option value="normal" selected>Normal</option>
+        <option value="hard">Hard</option>
+      </select>
+      <button id="sound-btn" type="button">Sound: On</button>
+    </section>
 
     <section class="game-wrap">
       <div id="game-board" class="board" aria-label="Snake game board"></div>

@@ -18,7 +18,10 @@
 body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, sans-serif;
-  background: linear-gradient(180deg, #f4f7fa 0%, var(--bg) 100%);
+  background:
+    radial-gradient(circle at 8% 8%, #ffffff 0%, transparent 28%),
+    radial-gradient(circle at 94% 0%, #dde8f4 0%, transparent 32%),
+    linear-gradient(180deg, #f4f7fa 0%, var(--bg) 100%);
   color: var(--text);
 }
 
@@ -41,13 +44,22 @@ body {
 
 .hud h1 {
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 1.35rem;
+  letter-spacing: 0.01em;
+}
+
+.subtitle {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 .meta {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 8px;
+  justify-content: flex-end;
 }
 
 .hud p {
@@ -56,6 +68,10 @@ body {
 
 .score {
   color: var(--muted);
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #f4f7fb;
+  border: 1px solid #e2e8ef;
 }
 
 .status {
@@ -81,6 +97,22 @@ body {
 .status-over {
   background: #fde9e9;
   color: #9f2626;
+}
+
+.toolbar {
+  margin-top: 10px;
+  padding: 10px 12px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.toolbar label {
+  color: var(--muted);
+  font-size: 0.92rem;
 }
 
 .game-wrap {
@@ -182,6 +214,20 @@ button {
   transition: transform 100ms ease, background-color 120ms ease, box-shadow 120ms ease;
 }
 
+select {
+  border: 1px solid #bec8d3;
+  background: #ffffff;
+  color: var(--text);
+  border-radius: 8px;
+  padding: 9px 10px;
+  font-size: 0.95rem;
+}
+
+select:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
 button:hover {
   background: #f6f9fc;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
@@ -281,11 +327,15 @@ button:focus-visible {
 
   .meta {
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
 
   .controls-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .toolbar {
+    flex-wrap: wrap;
   }
 }
 
