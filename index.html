@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classic Snake</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="hud">
+      <h1>Classic Snake</h1>
+      <div class="meta">
+        <p class="score">Score: <span id="score">0</span></p>
+        <p class="score">Best: <span id="best-score">0</span></p>
+        <p class="status" id="status">Running</p>
+      </div>
+    </header>
+
+    <section class="game-wrap">
+      <div id="game-board" class="board" aria-label="Snake game board"></div>
+      <div id="overlay" class="overlay hidden" aria-live="polite">
+        <p class="overlay-title" id="overlay-title">Game Over</p>
+        <p class="overlay-text" id="overlay-text">Press Restart or R to play again.</p>
+        <button id="restart-btn" class="overlay-action" type="button">Restart</button>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="Touch controls">
+      <div class="controls-grid">
+        <button class="control up" data-direction="up" type="button" aria-label="Move up">Up</button>
+        <button class="control left" data-direction="left" type="button" aria-label="Move left">Left</button>
+        <button class="control down" data-direction="down" type="button" aria-label="Move down">Down</button>
+        <button class="control right" data-direction="right" type="button" aria-label="Move right">Right</button>
+      </div>
+      <div class="actions">
+        <button id="pause-btn" type="button">Pause</button>
+        <button id="restart-btn-bottom" type="button">Restart</button>
+      </div>
+      <p class="hint">Keyboard: Arrow keys/WASD, Space pause, R restart</p>
+    </section>
+  </main>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
